@@ -1,0 +1,21 @@
+version: "2"
+
+volumes:
+  nfssyncthing:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=10.0.0.100,rw
+      device: ":/mnt/barracuda/nfssyncthing"
+
+services:
+  syncthing:
+    build: ./
+    image: syncthing
+    container_name: syncthing
+    restart: unless-stopped
+    ports:
+      - 8384:8384
+      - 22000:22000
+    volumes:
+      - nfssyncthing:/home/syncthing/syncthing-data
