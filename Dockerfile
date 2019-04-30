@@ -3,6 +3,7 @@ FROM alpine:latest
 MAINTAINER moorcito
 
 RUN adduser -D syncthing
+RUN mkdir /syncthing-bootstrap
 
 USER syncthing
 WORKDIR /home/syncthing
