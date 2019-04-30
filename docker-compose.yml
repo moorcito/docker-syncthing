@@ -7,6 +7,12 @@ volumes:
       type: nfs
       o: addr=10.0.0.100,rw,nfsvers=4,async
       device: ":/mnt/barracuda/nfssyncthing"
+  nfscedric:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=10.0.0.100,rw,nfsvers=4,async
+      device: ":/mnt/barracuda/jaime/imagenes/cedric"
 
 services:
   syncthing:
@@ -19,3 +25,4 @@ services:
       - 22000:22000
     volumes:
       - nfssyncthing:/home/syncthing/
+      - nfscedric:/cedric/
